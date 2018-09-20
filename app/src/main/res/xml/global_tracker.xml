@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ga_trackingId" translatable="false">UA-123066898-1</string>
+    <string name="facebook_app_id">2002074053196945</string>
+    <string name="fb_login_protocol_scheme">fb2002074053196945</string>
+</resources>

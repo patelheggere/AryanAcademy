@@ -1,0 +1,55 @@
+<resources>
+    <string name="app_name">Aryan Career Academy</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Current Affairs</string>
+    <string name="title_notifications">Job Updates</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="start">start</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="slide_2_title">Guest Lectures by IAS and KAS officers</string>
+    <string name="slide_3_title">Personality Development</string>
+    <string name="slide_4_title">Assessment</string>
+    <string name="slide_1_title">Slide1</string>
+    <string name="slide_1_desc">Coaching from Experienced Lecturer from all over state with free notes</string>
+    <string name="slide_4_desc">Weekly unit test will be conducting</string>
+    <string name="slide_3_desc">Weekly Personality development classes from Human Resource experts</string>
+    <string name="slide_2_desc">Weekly Guest Lectures from IAS and KAS officers and Experts</string>
+    <string name="welcome">Welcome</string>
+    <string name="tex">Text</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="events">Events</string>
+    <string name="feedback">Feedback</string>
+    <string name="confirmation">Confirm</string>
+    <string name="english">English</string>
+    <string name="kannada">Kannada</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exp_lect">Experienced Lecturer</string>
+    <string name="engish">English</string>
+    <string name="continu">Continue</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="registration">Registration</string>
+    <string name="tell_us_about_you">Tell us about you to serve you better</string>
+    <string name="email">Email</string>
+    <string name="interest">Area of Interest</string>
+    <string name="register">register</string>
+    <string name="name_required">Name Required</string>
+    <string name="phone_correct">Enter 10 digit mobile number</string>
+    <string name="please_select_area">Please select one are of interest</string>
+    <string name="default_notification_channel_id">fcm channels</string>
+    <string name="later_you_can_change">Later You can change the language in settings</string>
+</resources>

@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">ಆರ್ಯನ್ ವೃತ್ತಿ ಅಕಾಡೆಮಿ</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">ಪ್ರಚಲಿತ ವಿದ್ಯಮಾನ</string>
+    <string name="title_notifications">ಜಾಬ್ ಅಪ್ಡೇಟ್ಗಳು</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="start">start</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="slide_2_title">SLide 2</string>
+    <string name="slide_3_title">Slide 3</string>
+    <string name="slide_4_title">Slide 4</string>
+    <string name="slide_1_title">Slide1</string>
+    <string name="slide_1_desc">Slide 1 desc</string>
+    <string name="slide_4_desc">Slide 4 Desc</string>
+    <string name="slide_3_desc">Slide 3 Dewcription</string>
+    <string name="slide_2_desc">Slide 2 description</string>
+    <string name="welcome">ಸ್ವಾಗತ</string>
+    <string name="tex">Text</string>
+    <string name="contact_us">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</string>
+    <string name="events">ಕಾರ್ಯಕ್ರಮಗಳು</string>
+    <string name="feedback">ಪ್ರತಿಕ್ರಿಯೆ</string>
+    <string name="confirmation">ದೃಢೀಕರಿಸಿ</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exp_lect">Experienced Lecturer from all over the country\'</string>
+    <string name="engish">English</string>
+    <string name="continu">Continue</string>
+    <string name="name">Name</string>
+    <string name="registration">Registration</string>
+    <string name="email">Email</string>
+    <string name="name_required">Name Required</string>
+    <string name="default_notification_channel_id">fcm channels</string>
+</resources>

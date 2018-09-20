@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
+buildscript {
+    repositories {
+        // ...
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+    }
+    dependencies {
+        // ...
+        classpath 'io.fabric.tools:gradle:1.25.4'
+    }
+}
+
+allprojects {
+    // ...
+    repositories {
+        // ...
+        maven {
+            url 'https://maven.google.com/'
+        }
+    }
+}
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.patelheggere.aryanacademy"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled = true;
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.supportDesignLib"
+    implementation "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
+    // VectorDrawableCompat
+    implementation "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
+    // AnimatedVectorDrawableCompat
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutLibVersion"
+    //implementation "com.google.android.material:material:$rootProject.materialLibVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
+    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
+    implementation "com.android.support.test.espresso:espresso-idling-resource:$rootProject.espressoVersion"
+
+    //ntework library
+    implementation("com.squareup.retrofit2:retrofit:${rootProject.ext.retrofitLibVersion}") {
+        // exclude Retrofit’s OkHttp dependency module and define your own module import
+        exclude module: 'okhttp'
+    }
+    implementation "com.google.code.gson:gson:${rootProject.ext.gsonLibVersion}"
+    implementation "com.squareup.retrofit2:converter-gson:${rootProject.ext.retrofitLibVersion}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${rootProject.ext.okhttpLibVersion}"
+    implementation "com.squareup.okhttp3:okhttp:${rootProject.ext.okhttpLibVersion}"
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageLibVer"
+
+    implementation "com.google.firebase:firebase-storage:$rootProject.firebaseStorage"
+    implementation "com.google.firebase:firebase-database:$rootProject.firebaseDatabase"
+    implementation "com.google.firebase:firebase-auth:$rootProject.firebaseAuth"
+    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayout"
+    implementation "com.google.firebase:firebase-firestore:$rootProject.firestore"
+    implementation "com.google.firebase:firebase-messaging:${rootProject.ext.fcmmessage}"
+    implementation "com.firebase:firebase-jobdispatcher:${rootProject.ext.fbJobdispatcher}"
+
+    apply plugin: 'com.google.gms.google-services'
+}
+
+apply plugin: 'com.google.gms.google-services'

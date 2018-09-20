@@ -33,7 +33,7 @@ public class CurrentAffairsFragment extends BaseFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private DatabaseReference databaseReference, db2;
+    private DatabaseReference databaseReference, db2, db3;
     private HashMap<String, List<CurrentAffairsModel>> listDataChild;
     private View mView;
     private List<String> keyList;
@@ -84,17 +84,18 @@ public class CurrentAffairsFragment extends BaseFragment {
         keyList = new ArrayList<>();
         databaseReference  = FirebaseDatabase.getInstance().getReference();
 
-        //db2.child("21-09-2018").push().setValue(new CurrentAffairsModel("Veerendra"));
+       // db3 = FirebaseDatabase.getInstance().getReference().child("21-09-2018").setValue(new CurrentAffairsModel("Veerendra"));
+        db3 = FirebaseDatabase.getInstance().getReference();
+        //db3.child("english").child("currentaffairs").child("20-09-2018").setValue(new CurrentAffairsModel("sdfbgnhm"));
         databaseReference = databaseReference.child("english").child("currentaffairs");
         databaseReference.addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                for (DataSnapshot snapshot : dataSnapshot.getChildren())
                {
-                   key = snapshot.getKey();
-                   keyList.add(key);
+
                }
-               getNews(keyList);
+              // getNews(keyList);
            }
 
            @Override
@@ -106,6 +107,7 @@ public class CurrentAffairsFragment extends BaseFragment {
     }
     private void getNews(final List<String> keyList)
     {
+        Log.d(TAG, "calling get");
         for (int i = 0; i<keyList.size(); i++)
         {
             currentAffairsModelList = new ArrayList<>();
@@ -128,7 +130,8 @@ public class CurrentAffairsFragment extends BaseFragment {
                         n.append("\n");
                         init++;
                     }
-                    add(n.toString());
+                    String st = n.toString();
+                    add(st);
                 }
 
                 @Override
@@ -138,19 +141,17 @@ public class CurrentAffairsFragment extends BaseFragment {
             });
             NewsModel newsModel = new NewsModel(key, newStr);
             addNews(newsModel);
-            newStr = "";
         }
-
-        for (int j = 0; j<newsModelList.size(); j++)
+        Log.d(TAG, "newslist:"+newsModelList.size());
+        for (int j=0; j<newsModelList.size(); j++)
         {
-            Log.d(TAG, "getNews: "+newsModelList.get(j).getKey()+" "+newsModelList.get(j).getNews());
+            Log.d(TAG, "getNews: "+newsModelList.get(j).getNews());
         }
     }
 
     private void add(String str)
     {
-        newStr=newStr+""+str;
-        Log.d(TAG, "add: "+newStr);
+        newStr =newStr+str;
     }
     private void addNews(NewsModel ob)
     {

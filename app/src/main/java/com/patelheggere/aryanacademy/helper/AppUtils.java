@@ -37,6 +37,7 @@ public class AppUtils {
 
     public class Constants{
         public static final String LANGUAGE = "language";
+        public static final String LANGUAGE_SELECTED = "language";
         public static final long ONE_SECOND = 1000;
         public static final long TWO_SECOND = 2000;
         public static final long THREE_SECOND = 3000;

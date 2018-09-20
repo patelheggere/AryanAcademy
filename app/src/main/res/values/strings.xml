@@ -52,4 +52,15 @@
     <string name="please_select_area">Please select one are of interest</string>
     <string name="default_notification_channel_id">fcm channels</string>
     <string name="later_you_can_change">Later You can change the language in settings</string>
+    <string name="kas_details"><b>Eligibility:</b> \n\nGraduates &amp; Under Graduates.\n\nAge limit &amp; Attempts:\n\nGM Category – 35 years and 5 attempts\n\nOther backward Category – 38 years and 7 attempts\n\nSC / ST Category – 40 years &amp; Unlimited attempts\nPhysically handicapped or widow candidates – 45 years &amp; Unlimited attempts
+    \n\nSyllabus for Preliminary Examination:\n\nPAPER – I:
+        \n\n
+
+    Current events of National and International importance.\n\n
+    Humanities – History of India – Emphasis shall be on broad general understanding of the subject in its social, economic, cultural and political aspects with a focus on Indian national movement with special emphasis on Karnataka.\n
+    World Geography and Geography of India with a focus on Karnataka.\n
+    Indian polity.\n
+    Economy, country’s political system, rural development, planning and economic reforms in India-sustainable development, poverty alleviation, demographics, social sector initiatives etc.,
+
+    </string>
 </resources>

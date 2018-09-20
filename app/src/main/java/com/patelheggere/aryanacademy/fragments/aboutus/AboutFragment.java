@@ -191,42 +191,27 @@ public class AboutFragment extends BaseFragment implements AboutContract.View{
         listDataHeader.add("IAS");
 
         // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
+        List<String> Banking = new ArrayList<String>();
+        Banking.add("The Shawshank Redemption");
 
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("The Conjuring");
-        nowShowing.add("Despicable Me 2");
-        nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");
-
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
-        listDataChild.put(listDataHeader.get(3), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(4), nowShowing);
-        listDataChild.put(listDataHeader.get(5), comingSoon);
-        listDataChild.put(listDataHeader.get(6), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(7), nowShowing);
-        listDataChild.put(listDataHeader.get(8), comingSoon);
-        listDataChild.put(listDataHeader.get(9), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(10), nowShowing);
-        listDataChild.put(listDataHeader.get(11), comingSoon);
+        List<String> KAS = new ArrayList<String>();
+        KAS.add(getString(R.string.kas_details));
+        
+        List<String> PDO = new ArrayList<String>();
+        PDO.add("2 Guns");
+       
+        listDataChild.put(listDataHeader.get(0), KAS); // Header, Child data
+        listDataChild.put(listDataHeader.get(1), Banking);
+        listDataChild.put(listDataHeader.get(2), PDO);
+        listDataChild.put(listDataHeader.get(3), KAS); // Header, Child data
+        listDataChild.put(listDataHeader.get(4), Banking);
+        listDataChild.put(listDataHeader.get(5), PDO);
+        listDataChild.put(listDataHeader.get(6), KAS); // Header, Child data
+        listDataChild.put(listDataHeader.get(7), Banking);
+        listDataChild.put(listDataHeader.get(8), PDO);
+        listDataChild.put(listDataHeader.get(9), KAS); // Header, Child data
+        listDataChild.put(listDataHeader.get(10), Banking);
+        listDataChild.put(listDataHeader.get(11), PDO);
     }
 
     @Override

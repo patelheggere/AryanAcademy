@@ -25,6 +25,7 @@ import com.patelheggere.aryanacademy.fragments.jobs.JobUpdatesFragment;
 import com.patelheggere.aryanacademy.helper.SharedPrefsHelper;
 
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.LANGUAGE;
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.LANGUAGE_SELECTED;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener,
@@ -196,7 +197,6 @@ public class MainActivity extends BaseActivity
 
     private void showConfirmationDialog(final String language) {
         SharedPrefsHelper.getInstance().save(LANGUAGE, language);
-
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
         alertBuilder.setTitle(R.string.confirmation);
         alertBuilder.setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {

@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">ಸೆಟ್ಟಿಂಗ್ಗಳು</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">ಪ್ರಚಲಿತ ವಿದ್ಯಮಾನ</string>
+    <string name="title_dashboard">ವಿದ್ಯಮಾನ</string>
     <string name="title_notifications">ಜಾಬ್ ಅಪ್ಡೇಟ್ಗಳು</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -43,4 +43,5 @@
     <string name="email">Email</string>
     <string name="name_required">Name Required</string>
     <string name="default_notification_channel_id">fcm channels</string>
+    <string name="kas_details"><![CDATA[Eligibility \\nGraduates & Under Graduates\\nAge limit & Attempts\\nGM Category – 35 years and 5 attempts\\nOther backward Category – 38 years and 7 attempts\\nSC / ST Category – 40 years & Unlimited attempts]]></string>
 </resources>

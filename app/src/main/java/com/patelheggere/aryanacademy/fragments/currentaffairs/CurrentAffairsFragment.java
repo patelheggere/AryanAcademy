@@ -5,10 +5,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -16,13 +19,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.patelheggere.aryanacademy.R;
+import com.patelheggere.aryanacademy.adapter.CurrentAffairsAdapter;
 import com.patelheggere.aryanacademy.base.BaseFragment;
+import com.patelheggere.aryanacademy.helper.SharedPrefsHelper;
 import com.patelheggere.aryanacademy.model.CurrentAffairsModel;
 import com.patelheggere.aryanacademy.model.NewsModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.LANGUAGE;
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.LANGUAGE_SELECTED;
 
 public class CurrentAffairsFragment extends BaseFragment {
 
@@ -33,16 +41,13 @@ public class CurrentAffairsFragment extends BaseFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private DatabaseReference databaseReference, db2, db3;
-    private HashMap<String, List<CurrentAffairsModel>> listDataChild;
+    private DatabaseReference databaseReference, dbKannada, db3;
     private View mView;
-    private List<String> keyList;
-    private List<CurrentAffairsModel> currentAffairsModelList;
-    private String key;
-    private List<NewsModel> newsModelList = new ArrayList<>();
-    private StringBuffer news;
-    private String newStr="";
-    StringBuilder n = new StringBuilder();
+    private List<String> keyList = new ArrayList<>();
+    private List<String> newsModelList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private CurrentAffairsAdapter adapter;
+    private ProgressBar mProgressBar;
 
     private OnFragmentInteractionListener mListener;
 
@@ -74,88 +79,47 @@ public class CurrentAffairsFragment extends BaseFragment {
         // Inflate the layout for this fragment
         mView =  inflater.inflate(R.layout.fragment_current_affairs, container, false);
         initializeViews();
+        getNews();
         return mView;
     }
 
     private void initializeViews() {
+        recyclerView = mView.findViewById(R.id.rv_current_affairs);
+        mProgressBar = mView.findViewById(R.id.progress_bar);
 
+    }
 
-        listDataChild = new HashMap<String, List<CurrentAffairsModel>>();
-        keyList = new ArrayList<>();
+    private void getNews()
+    {
+        mProgressBar.setVisibility(View.VISIBLE);
         databaseReference  = FirebaseDatabase.getInstance().getReference();
-
-       // db3 = FirebaseDatabase.getInstance().getReference().child("21-09-2018").setValue(new CurrentAffairsModel("Veerendra"));
-        db3 = FirebaseDatabase.getInstance().getReference();
-        //db3.child("english").child("currentaffairs").child("20-09-2018").setValue(new CurrentAffairsModel("sdfbgnhm"));
-        databaseReference = databaseReference.child("english").child("currentaffairs");
+        String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "ka");
+        // db3 = FirebaseDatabase.getInstance().getReference().child("21-09-2018").setValue(new CurrentAffairsModel("Veerendra"));
+        dbKannada = FirebaseDatabase.getInstance().getReference();
+        //databaseReference.child(lang).child("currentaffairs").child("20-09-2018").setValue(new CurrentAffairsModel("sdfbgnhm"));
+        databaseReference = databaseReference.child(lang).child("currentaffairs");
         databaseReference.addValueEventListener(new ValueEventListener() {
-           @Override
-           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               for (DataSnapshot snapshot : dataSnapshot.getChildren())
-               {
-
-               }
-              // getNews(keyList);
-           }
-
-           @Override
-           public void onCancelled(@NonNull DatabaseError databaseError) {
-
-           }
-       });
-
-    }
-    private void getNews(final List<String> keyList)
-    {
-        Log.d(TAG, "calling get");
-        for (int i = 0; i<keyList.size(); i++)
-        {
-            currentAffairsModelList = new ArrayList<>();
-            news = new StringBuffer();
-            key = keyList.get(i);
-            db2 = FirebaseDatabase.getInstance().getReference().child("english").child("currentaffairs").child(keyList.get(i));
-            db2.addValueEventListener(new ValueEventListener()
-            {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    long count= dataSnapshot.getChildrenCount();
-                    long init = 1;
-                    n = new StringBuilder();
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                    {
-                        CurrentAffairsModel ob = snapshot.getValue(CurrentAffairsModel.class);
-                        n.append(init);
-                        n.append(".");
-                        n.append(ob.getMessage());
-                        n.append("\n");
-                        init++;
-                    }
-                    String st = n.toString();
-                    add(st);
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                keyList = new ArrayList<>();
+                newsModelList = new ArrayList<>();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren())
+                {
+                    keyList.add(snapshot.getKey());
+                    newsModelList.add(snapshot.getValue(CurrentAffairsModel.class).getMessage());
                 }
+                adapter = new CurrentAffairsAdapter(mActivity, keyList, newsModelList);
+                recyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
+                recyclerView.setAdapter(adapter);
+                mProgressBar.setVisibility(View.GONE);
+            }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
-            NewsModel newsModel = new NewsModel(key, newStr);
-            addNews(newsModel);
-        }
-        Log.d(TAG, "newslist:"+newsModelList.size());
-        for (int j=0; j<newsModelList.size(); j++)
-        {
-            Log.d(TAG, "getNews: "+newsModelList.get(j).getNews());
-        }
-    }
+            }
+        });
 
-    private void add(String str)
-    {
-        newStr =newStr+str;
-    }
-    private void addNews(NewsModel ob)
-    {
-        newsModelList.add(ob);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

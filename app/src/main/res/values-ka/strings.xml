@@ -44,4 +44,11 @@
     <string name="name_required">Name Required</string>
     <string name="default_notification_channel_id">fcm channels</string>
     <string name="kas_details"><![CDATA[Eligibility \\nGraduates & Under Graduates\\nAge limit & Attempts\\nGM Category – 35 years and 5 attempts\\nOther backward Category – 38 years and 7 attempts\\nSC / ST Category – 40 years & Unlimited attempts]]></string>
+    <string name="qualification">Qualification</string>
+    <string name="noti_date">Notification Date</string>
+    <string name="last_date">Last Date</string>
+    <string name="mode_of_exam">Mode of Exxam</string>
+    <string name="mode_of_payment">Mode of Payment</string>
+    <string name="exam_date">Exam Date</string>
+    <string name="website">Website</string>
 </resources>

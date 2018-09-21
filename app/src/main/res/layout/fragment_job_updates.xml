@@ -5,10 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".fragments.jobs.JobUpdatesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_jobs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Job Updates" />
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/current_affairs_item">
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

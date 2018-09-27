@@ -6,6 +6,8 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -25,7 +27,10 @@ import com.patelheggere.aryanacademy.view.main.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.EMAIL;
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.FIRST_TIME;
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.MOBILE;
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.NAME;
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.TEN_SECOND;
 
 public class RegistrationActivity extends BaseActivity {
@@ -65,6 +70,12 @@ public class RegistrationActivity extends BaseActivity {
         listInterest.add("FDA");
         listInterest.add("SDA");
         listInterest.add("BANKING");
+        listInterest.add("TET");
+        listInterest.add("CET");
+        listInterest.add("NEET");
+        listInterest.add("POLICE");
+        listInterest.add("PSI");
+        listInterest.add("KES");
         listInterest.add("OTHERS");
     }
 
@@ -113,6 +124,11 @@ public class RegistrationActivity extends BaseActivity {
                 AppUtils.showSnackBar(activity, getString(R.string.please_select_area));
                 return;
             }
+           /* if(textInputEditTextEmail.getText()!=null) {
+                if (!(Patterns.EMAIL_ADDRESS.matcher(textInputEditTextEmail.getText()).matches())) {
+                    return;
+                }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -125,6 +141,9 @@ public class RegistrationActivity extends BaseActivity {
         userDetails.setName(textInputEditTextName.getText().toString());
         databaseReference.child(textInputEditTextPhone.getText().toString()).setValue(userDetails);
         SharedPrefsHelper.getInstance().save(FIRST_TIME, false);
+        SharedPrefsHelper.getInstance().save(NAME,textInputEditTextName.getText().toString());
+        SharedPrefsHelper.getInstance().save(EMAIL, textInputEditTextEmail.getText().toString());
+        SharedPrefsHelper.getInstance().save(MOBILE, textInputEditTextPhone.getText().toString());
         startActivity(new Intent(activity, MainActivity.class));
         finish();
     }

@@ -63,6 +63,14 @@
     Economy, country’s political system, rural development, planning and economic reforms in India-sustainable development, poverty alleviation, demographics, social sector initiatives etc.,
 
     </string>
+    <string name="kas_syllabus">Current events of National and International importance.\n\n
+    Humanities – History of India – Emphasis shall be on broad general understanding of the subject in its social, economic, cultural and political aspects with a focus on Indian national movement with special emphasis on Karnataka.\n
+    World Geography and Geography of India with a focus on Karnataka.\n
+    Indian polity.\n
+    Economy, country’s political system, rural development, planning and economic reforms in India-sustainable development, poverty alleviation, demographics, social sector initiatives etc.,
+</string>
+    <string name="kas_elig">Graduates &amp; Under Graduates.</string>
+    <string name="kas_attempts">GM Category – 35 years and 5 attempts\n\nOther backward Category – 38 years and 7 attempts\n\nSC / ST Category – 40 years &amp; Unlimited attempts\nPhysically handicapped or widow candidates – 45 years &amp; Unlimited attempts</string>
     <string name="qualification">Qualification</string>
     <string name="noti_date">Notification Date</string>
     <string name="last_date">Last Date</string>
@@ -72,4 +80,23 @@
     <string name="exam_date">Exam Date</string>
     <string name="no_of_post">No of Posts</string>
     <string name="website">Website</string>
+    <string name="eligibiltiy">Eligibility:</string>
+    <string name="attempts">Age Limit and Attempts</string>
+    <string name="syllabus">Syllabus:</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="guest_lect">Guest Lectures</string>
+    <string name="gallery">Gallery</string>
+    <string name="date">Date</string>
+    <string name="place">Place</string>
+    <string name="raichur">Raichur</string>
+    <string name="some_thing_wrong">Aome thing went wrong</string>
+    <string name="title">Title</string>
+    <string name="share_message">Hi I am using Aryan Career Academy app. It is very good Coaching center</string>
+    <string name="share_us_via">Share Via</string>
+    <string name="no_app_to_share">No apps to share</string>
+    <string name="change_language">Choose Language</string>
+    <string name="adds">Raichur, Karnataka</string>
+    <string name="ok">Ok</string>
+    <string name="email_adds">patelheggere@gmail.com</string>
 </resources>

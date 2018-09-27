@@ -58,7 +58,12 @@ public class AppUtils {
         public static final String OVER_QUERY_LIMIT = "OVER_QUERY_LIMIT";
         public static final String ZERO_RESULTS = "ZERO_RESULTS";
         public static final String OK = "OK";
+        public static final String GALLERY = "gallery";
+        public static final String EVENTS = "events";
 
         public static final String FIRST_TIME = "first";
+        public static final String NAME ="name";
+        public static final String EMAIL = "email";
+        public static final String MOBILE = "mobile";
     }
 }

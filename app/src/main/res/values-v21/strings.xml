@@ -14,4 +14,23 @@
     <string name="mode_of_payment">Mode of Payment</string>
     <string name="exam_date">Exam Date</string>
     <string name="website">Website</string>
+    <string name="eligibiltiy">Eligibility:</string>
+    <string name="attempts">Age Limit and Attempts</string>
+    <string name="syllabus">Syllabus:</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
+    <string name="guest_lect">Guest Lectures</string>
+    <string name="gallery">Gallery</string>
+    <string name="date">Date</string>
+    <string name="place">Place</string>
+    <string name="raichur">Raichur</string>
+    <string name="some_thing_wrong">Aome thing went wrong</string>
+    <string name="title">Title</string>
+    <string name="share_message">Hi I am using Aryan Career Academy app. It is very good Coaching center</string>
+    <string name="share_us_via">Share Via</string>
+    <string name="no_app_to_share">No apps to share</string>
+    <string name="change_language">Choose Language</string>
+    <string name="adds">Raichur, Karnataka</string>
+    <string name="ok">Ok</string>
+    <string name="email_adds">patelheggere@gmail.com</string>
 </resources>

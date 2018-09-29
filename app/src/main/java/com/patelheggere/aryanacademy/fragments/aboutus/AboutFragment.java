@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.adapter.CustomExpandableListAdapter;
 import com.patelheggere.aryanacademy.base.BaseFragment;
+import com.patelheggere.aryanacademy.model.CourseModel;
 import com.patelheggere.aryanacademy.model.Data;
 import com.patelheggere.aryanacademy.view.main.MainActivity;
 
@@ -47,7 +48,7 @@ public class AboutFragment extends BaseFragment implements AboutContract.View{
     CustomExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<CourseModel>> listDataChild;
 
 
     public AboutFragment() {
@@ -174,44 +175,122 @@ public class AboutFragment extends BaseFragment implements AboutContract.View{
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<CourseModel>>();
 
-        // Adding child data
         listDataHeader.add("KAS");
         listDataHeader.add("PDO");
         listDataHeader.add("BANKING");
         listDataHeader.add("FDA");
         listDataHeader.add("SDA");
-        listDataHeader.add("IAS");
-        listDataHeader.add("KAS");
-        listDataHeader.add("PDO");
-        listDataHeader.add("BANKING");
-        listDataHeader.add("FDA");
-        listDataHeader.add("SDA");
-        listDataHeader.add("IAS");
+        listDataHeader.add("PSI");
+        listDataHeader.add("NEET");
+        listDataHeader.add("POLICE");
+        listDataHeader.add("CET");
+        listDataHeader.add("TET");
+        listDataHeader.add("KES");
 
-        // Adding child data
-        List<String> Banking = new ArrayList<String>();
-        Banking.add("The Shawshank Redemption");
+        CourseModel kas = new CourseModel();
+        kas.setmEligibilty(getString(R.string.kas_elig));
+        kas.setmAgeAttempts(getString(R.string.kas_attempts));
+        kas.setPart1(getString(R.string.kas_syllabus));
 
-        List<String> KAS = new ArrayList<String>();
-        KAS.add(getString(R.string.kas_details));
-        
-        List<String> PDO = new ArrayList<String>();
-        PDO.add("2 Guns");
-       
+        List<CourseModel> KAS = new ArrayList<CourseModel>();
+        KAS.add(kas);
+
+
+        CourseModel pdo = new CourseModel();
+        pdo.setmEligibilty(getString(R.string.kas_elig));
+        pdo.setmAgeAttempts(getString(R.string.kas_attempts));
+        pdo.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> PDO = new ArrayList<CourseModel>();
+        PDO.add(pdo);
+
+        CourseModel banking = new CourseModel();
+        banking.setmEligibilty(getString(R.string.kas_elig));
+        banking.setmAgeAttempts(getString(R.string.kas_attempts));
+        banking.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> BANKING = new ArrayList<CourseModel>();
+        BANKING.add(banking);
+
+        CourseModel fda = new CourseModel();
+        fda.setmEligibilty(getString(R.string.kas_elig));
+        fda.setmAgeAttempts(getString(R.string.kas_attempts));
+        fda.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> FDA = new ArrayList<CourseModel>();
+        FDA.add(fda);
+
+        CourseModel sda = new CourseModel();
+        sda.setmEligibilty(getString(R.string.kas_elig));
+        sda.setmAgeAttempts(getString(R.string.kas_attempts));
+        sda.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> SDA = new ArrayList<CourseModel>();
+        SDA.add(sda);
+
+        CourseModel psi = new CourseModel();
+        psi.setmEligibilty(getString(R.string.kas_elig));
+        psi.setmAgeAttempts(getString(R.string.kas_attempts));
+        psi.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> PSI = new ArrayList<CourseModel>();
+        PSI.add(psi);
+
+        CourseModel neet = new CourseModel();
+        neet.setmEligibilty(getString(R.string.kas_elig));
+        neet.setmAgeAttempts(getString(R.string.kas_attempts));
+        neet.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> NEET = new ArrayList<CourseModel>();
+        NEET.add(neet);
+
+
+        CourseModel police = new CourseModel();
+        police.setmEligibilty(getString(R.string.kas_elig));
+        police.setmAgeAttempts(getString(R.string.kas_attempts));
+        police.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> POLICE = new ArrayList<CourseModel>();
+        POLICE.add(police);
+
+        CourseModel cet = new CourseModel();
+        cet.setmEligibilty(getString(R.string.kas_elig));
+        cet.setmAgeAttempts(getString(R.string.kas_attempts));
+        cet.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> CET = new ArrayList<CourseModel>();
+        CET.add(cet);
+
+
+        CourseModel kes = new CourseModel();
+        kes.setmEligibilty(getString(R.string.kas_elig));
+        kes.setmAgeAttempts(getString(R.string.kas_attempts));
+        kes.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> KES = new ArrayList<CourseModel>();
+        KES.add(kes);
+
+        CourseModel tet = new CourseModel();
+        tet.setmEligibilty(getString(R.string.kas_elig));
+        tet.setmAgeAttempts(getString(R.string.kas_attempts));
+        tet.setPart1(getString(R.string.kas_syllabus));
+
+        List<CourseModel> TET = new ArrayList<CourseModel>();
+        TET.add(tet);
+
         listDataChild.put(listDataHeader.get(0), KAS); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), Banking);
-        listDataChild.put(listDataHeader.get(2), PDO);
-        listDataChild.put(listDataHeader.get(3), KAS); // Header, Child data
-        listDataChild.put(listDataHeader.get(4), Banking);
-        listDataChild.put(listDataHeader.get(5), PDO);
-        listDataChild.put(listDataHeader.get(6), KAS); // Header, Child data
-        listDataChild.put(listDataHeader.get(7), Banking);
-        listDataChild.put(listDataHeader.get(8), PDO);
-        listDataChild.put(listDataHeader.get(9), KAS); // Header, Child data
-        listDataChild.put(listDataHeader.get(10), Banking);
-        listDataChild.put(listDataHeader.get(11), PDO);
+        listDataChild.put(listDataHeader.get(1), PDO); // Header, Child data
+        listDataChild.put(listDataHeader.get(2), BANKING); // Header, Child data
+        listDataChild.put(listDataHeader.get(3), FDA); // Header, Child data
+        listDataChild.put(listDataHeader.get(4), SDA); // Header, Child data
+        listDataChild.put(listDataHeader.get(5), PSI); // Header, Child data
+        listDataChild.put(listDataHeader.get(6), NEET); // Header, Child data
+        listDataChild.put(listDataHeader.get(7), POLICE); // Header, Child data
+        listDataChild.put(listDataHeader.get(8), CET); // Header, Child data
+        listDataChild.put(listDataHeader.get(9), TET); // Header, Child data
+        listDataChild.put(listDataHeader.get(10), KES); // Header, Child data
     }
 
     @Override

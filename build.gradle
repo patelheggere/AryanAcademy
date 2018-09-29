@@ -54,8 +54,7 @@ ext {
     retrofitLibVersion = "2.3.0"
     okhttpLibVersion = "3.8.0"
     gsonLibVersion = "2.8.2"
-
-    glideLibVersion = "4.7.1"
+    glideLibVersion = "4.8.0"
     circleImageLibVer = '2.2.0'
 
     firebaseDatabase = "16.0.2"

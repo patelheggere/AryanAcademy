@@ -10,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
 import com.patelheggere.aryanacademy.R;
+import com.patelheggere.aryanacademy.model.CourseModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,10 +20,10 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private Context _context;
     private List<String> _listDataHeader; // header titles
     // child data in format of header title, child title
-    private HashMap<String, List<String>> _listDataChild;
+    private HashMap<String, List<CourseModel>> _listDataChild;
 
     public CustomExpandableListAdapter(Context context, List<String> listDataHeader,
-                                 HashMap<String, List<String>> listChildData) {
+                                 HashMap<String, List<CourseModel>> listChildData) {
         this._context = context;
         this._listDataHeader = listDataHeader;
         this._listDataChild = listChildData;
@@ -43,7 +44,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final String childText = (String) getChild(groupPosition, childPosition);
+        final CourseModel childText =  (CourseModel)getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this._context
@@ -51,10 +52,53 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
             convertView = infalInflater.inflate(R.layout.exp_draws_item2, null);
         }
 
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.textView);
+        TextView eligibility = (TextView) convertView.findViewById(R.id.tv_eligibility_value);
+        eligibility.setText(childText.getmEligibilty());
 
-        txtListChild.setText(childText);
+        TextView attempts = (TextView) convertView.findViewById(R.id.tv_attempts_value);
+        attempts.setText(childText.getmAgeAttempts());
+
+        TextView syllabus = (TextView) convertView.findViewById(R.id.tv_syllabus_value1);
+        if(childText.getPart1()!=null)
+        {
+            syllabus.setText(childText.getPart1());
+        }
+
+        TextView syllabus2 = (TextView) convertView.findViewById(R.id.tv_syllabus_value2);
+        if(childText.getPart2()!=null)
+        {
+            syllabus2.setVisibility(View.VISIBLE);
+            syllabus2.setText(childText.getPart2());
+        }
+
+        TextView syllabus3 = (TextView) convertView.findViewById(R.id.tv_syllabus_value3);
+        if(childText.getPart3()!=null)
+        {
+            syllabus3.setVisibility(View.VISIBLE);
+            syllabus3.setText(childText.getPart3());
+        }
+
+        TextView syllabus4 = (TextView) convertView.findViewById(R.id.tv_syllabus_value4);
+        if(childText.getPart4()!=null)
+        {
+            syllabus2.setVisibility(View.VISIBLE);
+            syllabus2.setText(childText.getPart4());
+        }
+
+        TextView syllabus5 = (TextView) convertView.findViewById(R.id.tv_syllabus_value5);
+        if(childText.getPart5()!=null)
+        {
+            syllabus5.setVisibility(View.VISIBLE);
+            syllabus5.setText(childText.getPart5());
+        }
+
+        TextView syllabus6 = (TextView) convertView.findViewById(R.id.tv_syllabus_value6);
+        if(childText.getPart6()!=null)
+        {
+            syllabus6.setVisibility(View.VISIBLE);
+            syllabus6.setText(childText.getPart6());
+        }
+
         return convertView;
     }
 

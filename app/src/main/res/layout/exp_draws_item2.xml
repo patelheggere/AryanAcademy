@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,12 +12,113 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-<TextView
-    android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textColor="@android:color/holo_blue_light"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+        <TextView
+        android:id="@+id/tv_eligibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+        android:text="@string/eligibiltiy"/>
+        <TextView
+            android:id="@+id/tv_eligibility_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/eligibiltiy"/>
+        <TextView
+            android:id="@+id/tv_attempts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/attempts"/>
+
+        <TextView
+            android:id="@+id/tv_attempts_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/eligibiltiy"/>
+
+        <TextView
+            android:id="@+id/tv_syllabus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:paddingStart="5dp"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/syllabus"/>
+        <TextView
+            android:id="@+id/tv_syllabus_value1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/eligibiltiy"/>
+        <TextView
+            android:id="@+id/tv_syllabus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:paddingStart="5dp"
+            android:visibility="gone"
+            android:paddingLeft="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/syllabus"/>
+        <TextView
+            android:id="@+id/tv_syllabus_value2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/eligibiltiy"/>
+
+        <TextView
+            android:id="@+id/tv_syllabus_value3"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/eligibiltiy"/>
+
+        <TextView
+            android:id="@+id/tv_syllabus_value4"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/eligibiltiy"/>
+
+        <TextView
+            android:id="@+id/tv_syllabus_value5"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/eligibiltiy"/>
+
+        <TextView
+            android:id="@+id/tv_syllabus_value6"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@android:color/black"
+            android:text="@string/eligibiltiy"/>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -26,6 +26,7 @@ import com.patelheggere.aryanacademy.model.CurrentAffairsModel;
 import com.patelheggere.aryanacademy.model.NewsModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -92,12 +93,15 @@ public class CurrentAffairsFragment extends BaseFragment {
     private void getNews()
     {
         mProgressBar.setVisibility(View.VISIBLE);
-        databaseReference  = FirebaseDatabase.getInstance().getReference();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+       // firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference  = firebaseDatabase.getReference();
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "ka");
         // db3 = FirebaseDatabase.getInstance().getReference().child("21-09-2018").setValue(new CurrentAffairsModel("Veerendra"));
         dbKannada = FirebaseDatabase.getInstance().getReference();
         //databaseReference.child(lang).child("currentaffairs").child("20-09-2018").setValue(new CurrentAffairsModel("sdfbgnhm"));
         databaseReference = databaseReference.child(lang).child("currentaffairs");
+        databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -108,6 +112,8 @@ public class CurrentAffairsFragment extends BaseFragment {
                     keyList.add(snapshot.getKey());
                     newsModelList.add(snapshot.getValue(CurrentAffairsModel.class).getMessage());
                 }
+                Collections.reverse(keyList);
+                Collections.reverse(newsModelList);
                 adapter = new CurrentAffairsAdapter(mActivity, keyList, newsModelList);
                 recyclerView.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
                 recyclerView.setAdapter(adapter);

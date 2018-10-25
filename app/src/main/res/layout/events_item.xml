@@ -9,6 +9,7 @@
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:background="@android:color/white"
         android:layout_height="match_parent">
         <android.support.constraint.Guideline
             android:id="@+id/gl_1"
@@ -25,11 +26,17 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
+            android:textStyle="bold"
             android:textColor="@android:color/black"
             android:text="@string/title_home"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+        <include
+            layout="@layout/draws_horizontal_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/tv_event_title"/>
         <TextView
             android:id="@+id/tv_event_desc"
             android:layout_width="0dp"
@@ -38,6 +45,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:gravity="center"
+            android:textColor="@android:color/primary_text_light"
             android:text="@string/slide_1_desc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +60,7 @@
             android:layout_marginTop="16dp"
             android:gravity="right"
             android:text="@string/date"
+            android:textColor="@android:color/black"
             app:layout_constraintEnd_toStartOf="@+id/gl_1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_event_desc" />
@@ -64,7 +73,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/date"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/primary_text_light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/gl_1"
             app:layout_constraintTop_toBottomOf="@+id/tv_event_desc" />
@@ -79,6 +88,7 @@
             android:layout_marginTop="16dp"
             android:gravity="right"
             android:text="@string/place"
+            android:textColor="@android:color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/gl_1"
             app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +103,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="@string/raichur"
+            android:textColor="@android:color/primary_text_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/gl_1"

@@ -40,6 +40,7 @@ public class GalleryActivity extends BaseActivity {
     private DatabaseReference databaseReference;
     private List<GalleryModel> galleryModelList;
     private ProgressBar mProgressBar;
+    private FirebaseDatabase firebaseDatabase;
     @Override
     protected int getContentView() {
         return R.layout.activity_gallery;
@@ -60,13 +61,15 @@ public class GalleryActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //firebaseDatabase.setPersistenceEnabled(true);
         getImageDate();
     }
 
     private void getImageDate() {
         mProgressBar.setVisibility(View.VISIBLE);
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "kn");
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference  = firebaseDatabase.getReference();
         databaseReference = databaseReference.child(GALLERY).child(lang);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,7 +80,6 @@ public class GalleryActivity extends BaseActivity {
                     GalleryModel ob = new GalleryModel();
                     ob = snapshot.getValue(GalleryModel.class);
                     galleryModelList.add(ob);
-                    Log.d(TAG, "onDataChange: "+galleryModelList.get(0).getTitle());
                 }
                 mPager.setAdapter(new SlidingImage_Adapter(context,galleryModelList));
                 mProgressBar.setVisibility(View.GONE);

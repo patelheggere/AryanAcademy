@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.model.GalleryModel;
 
@@ -30,10 +31,6 @@ public class SlidingImage_Adapter extends PagerAdapter {
         this.context = context;
         this.list=IMAGES;
         inflater = LayoutInflater.from(context);
-        for (int i = 0; i<list.size(); i++)
-        {
-            Log.d(TAG, "SlidingImage_Adapter: "+list.get(i).getTitle());
-        }
     }
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
@@ -51,7 +48,7 @@ public class SlidingImage_Adapter extends PagerAdapter {
 
         ImageView imageView = layout.findViewById(R.id.image);
         if(ob.getUrl()!=null) {
-            Glide.with(context).load(ob.getUrl()).into(imageView);
+            Glide.with(context).load(ob.getUrl()).apply(RequestOptions.placeholderOf(R.drawable.logo).error(R.drawable.logo)).into(imageView);
         }
         collection.addView(layout);
         return layout;

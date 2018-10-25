@@ -26,6 +26,7 @@ import com.patelheggere.aryanacademy.model.CurrentAffairsModel;
 import com.patelheggere.aryanacademy.model.JobUpdatesModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.JOB;
@@ -46,6 +47,7 @@ public class JobUpdatesFragment extends BaseFragment {
 
     private OnFragmentInteractionListener mListener;
     private JobUpdateAdapter adapter;
+    private FirebaseDatabase firebaseDatabase;
 
     public JobUpdatesFragment() {
         // Required empty public constructor
@@ -74,6 +76,8 @@ public class JobUpdatesFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         mView =  inflater.inflate(R.layout.fragment_job_updates, container, false);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        //firebaseDatabase.setPersistenceEnabled(true);
         initViews();
         getJobDetails();
         return mView;
@@ -89,20 +93,8 @@ public class JobUpdatesFragment extends BaseFragment {
     private void getJobDetails() {
         mProgressBar.setVisibility(View.VISIBLE);
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "ka");
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        /*JobUpdatesModel ob = new JobUpdatesModel();
-        ob.setTitle("PDO");
-        ob.setDept("KPSC");
-        ob.setDocuments("All marks card");
-        ob.setExamDate("3010-2018");
-        ob.setExamMode("Offline");
-        ob.setLastDate("30-09-2018");
-        ob.setNoPosts("400");
-        ob.setNotiDate("30-08-2018");
-        ob.setPaymentMode("post office challan");
-        ob.setQualification("Any degree");
-        ob.setWebsite("http://www.kpsc.kar.nic.in");
-        databaseReference.child(lang).child(JOB).push().setValue(ob);*/
+
+        databaseReference = firebaseDatabase.getReference();
         databaseReference = databaseReference.child(lang).child(JOB);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,6 +103,7 @@ public class JobUpdatesFragment extends BaseFragment {
                 {
                     jobUpdatesModelList.add(snapshot.getValue(JobUpdatesModel.class));
                 }
+                Collections.reverse(jobUpdatesModelList);
                 adapter = new JobUpdateAdapter(mActivity, jobUpdatesModelList);
                 recyclerViewJobs.setLayoutManager(new LinearLayoutManager(mActivity, LinearLayoutManager.VERTICAL, false));
                 recyclerViewJobs.setAdapter(adapter);

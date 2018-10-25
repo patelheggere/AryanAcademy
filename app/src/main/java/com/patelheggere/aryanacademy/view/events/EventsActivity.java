@@ -25,6 +25,7 @@ import com.patelheggere.aryanacademy.model.EventDetailsModel;
 import com.patelheggere.aryanacademy.model.GalleryModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.EVENTS;
@@ -67,7 +68,9 @@ public class EventsActivity extends BaseActivity {
     private void getEvents() {
         mProgressBar.setVisibility(View.VISIBLE);
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "en");
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+       // firebaseDatabase.setPersistenceEnabled(true);
+        databaseReference  = firebaseDatabase.getReference();
         databaseReference = databaseReference.child(EVENTS).child(lang);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -79,6 +82,7 @@ public class EventsActivity extends BaseActivity {
                     ob = snapshot.getValue(EventDetailsModel.class);
                     eventsModelList.add(ob);
                 }
+                Collections.reverse(eventsModelList);
                 recyclerViewJobs.setAdapter(new EventDetailsAdapter(context,eventsModelList));
                 recyclerViewJobs.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
                 mProgressBar.setVisibility(View.GONE);

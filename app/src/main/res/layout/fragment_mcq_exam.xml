@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.exam.MCQExamFragment">
+
+    <TextView
+        android:id="@+id/textViewQuesionNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="1. " />
+
+    <TextView
+        android:id="@+id/textViewQuesion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewQuesionNumber"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Who is The governor of RBI?" />
+    <LinearLayout
+        android:id="@+id/linearLayoutOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewQuesion">
+        <RadioGroup
+            android:id="@+id/radioGroupQuestions"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RadioButton
+                android:id="@+id/radioButtonOp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Urjith Patel"/>
+            <RadioButton
+                android:id="@+id/radioButtonOp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Veerendra Patel"/>
+            <RadioButton
+                android:id="@+id/radioButtonOp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Sagar Patel"/>
+            <RadioButton
+                android:id="@+id/radioButtonOp4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Shashikanth Das"/>
+            <RadioButton
+                android:id="@+id/radioButtonOp5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Chanakya Patel"/>
+        </RadioGroup>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

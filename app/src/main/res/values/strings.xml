@@ -99,4 +99,8 @@
     <string name="adds">Raichur, Karnataka</string>
     <string name="ok">Ok</string>
     <string name="email_adds">patelheggere@gmail.com</string>
+    <string name="prev">prev</string>
+    <string name="back">back</string>
+    <string name="exam">Exam</string>
+    <string name="take_test">Start</string>
 </resources>

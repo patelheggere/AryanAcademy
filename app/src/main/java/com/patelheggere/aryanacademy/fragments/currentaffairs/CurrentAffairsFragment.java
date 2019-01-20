@@ -18,6 +18,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patelheggere.aryanacademy.AryanAcademyApplication;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.adapter.CurrentAffairsAdapter;
 import com.patelheggere.aryanacademy.base.BaseFragment;
@@ -95,11 +96,8 @@ public class CurrentAffairsFragment extends BaseFragment {
         mProgressBar.setVisibility(View.VISIBLE);
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
        // firebaseDatabase.setPersistenceEnabled(true);
-        databaseReference  = firebaseDatabase.getReference();
+        databaseReference  = AryanAcademyApplication.getFireBaseRef();
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "ka");
-        // db3 = FirebaseDatabase.getInstance().getReference().child("21-09-2018").setValue(new CurrentAffairsModel("Veerendra"));
-        dbKannada = FirebaseDatabase.getInstance().getReference();
-        //databaseReference.child(lang).child("currentaffairs").child("20-09-2018").setValue(new CurrentAffairsModel("sdfbgnhm"));
         databaseReference = databaseReference.child(lang).child("currentaffairs");
         databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {

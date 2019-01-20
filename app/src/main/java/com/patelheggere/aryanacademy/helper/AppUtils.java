@@ -65,5 +65,6 @@ public class AppUtils {
         public static final String NAME ="name";
         public static final String EMAIL = "email";
         public static final String MOBILE = "mobile";
+        public static final String COURSE = "course";
     }
 }

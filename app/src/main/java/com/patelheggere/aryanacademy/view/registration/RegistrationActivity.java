@@ -17,6 +17,7 @@ import android.widget.Spinner;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.patelheggere.aryanacademy.AryanAcademyApplication;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.base.BaseActivity;
 import com.patelheggere.aryanacademy.helper.AppUtils;
@@ -27,6 +28,7 @@ import com.patelheggere.aryanacademy.view.main.MainActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.COURSE;
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.EMAIL;
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.FIRST_TIME;
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.MOBILE;
@@ -39,7 +41,7 @@ public class RegistrationActivity extends BaseActivity {
     private ActionBar mActionBar;
     private Spinner spinner;
     private TextInputEditText textInputEditTextName, textInputEditTextPhone, textInputEditTextEmail;
-    private String mInterest;
+    private String course;
     private List<String> listInterest;
     private ArrayAdapter<String> adapter;
     private Button mButtonSubmit;
@@ -91,7 +93,7 @@ public class RegistrationActivity extends BaseActivity {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                mInterest = listInterest.get(i);
+                course = listInterest.get(i);
             }
 
             @Override
@@ -119,7 +121,7 @@ public class RegistrationActivity extends BaseActivity {
                 textInputEditTextPhone.setError(getString(R.string.phone_correct));
                 return;
             }
-            if(mInterest.contains("Select one"))
+            if(course.contains("Select one"))
             {
                 AppUtils.showSnackBar(activity, getString(R.string.please_select_area));
                 return;
@@ -132,15 +134,16 @@ public class RegistrationActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference = databaseReference.child("users").child(mInterest);
+        databaseReference = AryanAcademyApplication.getFireBaseRef();
+        databaseReference = databaseReference.child("users").child(course);
         UserDetails userDetails = new UserDetails();
         userDetails.setEmail(textInputEditTextEmail.getText().toString());
-        userDetails.setInterest(mInterest);
+        userDetails.setInterest(course);
         userDetails.setMobile(textInputEditTextPhone.getText().toString());
         userDetails.setName(textInputEditTextName.getText().toString());
-        databaseReference.child(textInputEditTextPhone.getText().toString()).setValue(userDetails);
+        databaseReference.child(textInputEditTextPhone.getText().toString()).child("profile").setValue(userDetails);
         SharedPrefsHelper.getInstance().save(FIRST_TIME, false);
+        SharedPrefsHelper.getInstance().save(COURSE, course);
         SharedPrefsHelper.getInstance().save(NAME,textInputEditTextName.getText().toString());
         SharedPrefsHelper.getInstance().save(EMAIL, textInputEditTextEmail.getText().toString());
         SharedPrefsHelper.getInstance().save(MOBILE, textInputEditTextPhone.getText().toString());

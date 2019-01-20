@@ -20,6 +20,10 @@
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_feedback"
             android:title="@string/feedback" />
+        <item
+            android:id="@+id/nav_exam"
+            android:icon="@drawable/ic_feedback"
+            android:title="@string/exam" />
     </group>
 
     <item android:title="@string/communicate">

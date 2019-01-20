@@ -39,6 +39,7 @@ import com.patelheggere.aryanacademy.fragments.currentaffairs.CurrentAffairsFrag
 import com.patelheggere.aryanacademy.fragments.jobs.JobUpdatesFragment;
 import com.patelheggere.aryanacademy.helper.SharedPrefsHelper;
 import com.patelheggere.aryanacademy.view.events.EventsActivity;
+import com.patelheggere.aryanacademy.view.exam.ExamActivity;
 import com.patelheggere.aryanacademy.view.gallery.GalleryActivity;
 
 import static com.patelheggere.aryanacademy.helper.AppUtils.Constants.EMAIL;
@@ -244,10 +245,19 @@ public class MainActivity extends BaseActivity
         } else if (id == R.id.nav_language) {
             showAlert();
         }
+        else if(id==R.id.nav_exam)
+        {
+            showExamScreen();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void showExamScreen() {
+        Intent intent = new Intent(context, ExamActivity.class);
+        startActivity(intent);
     }
 
     private void sendEmail()

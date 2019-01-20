@@ -3,6 +3,7 @@
     package="com.patelheggere.aryanacademy">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:name=".AryanAcademyApplication"
         android:allowBackup="true"
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".view.exam.TestActivity"></activity>
         <activity
             android:name=".view.main.MainActivity"
             android:label="@string/app_name"
@@ -32,6 +34,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW " />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -59,11 +62,13 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".view.gallery.GalleryActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".view.events.EventsActivity"
-            android:screenOrientation="portrait">
-        </activity>
+        <activity
+            android:name=".view.gallery.GalleryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.events.EventsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".view.exam.ExamActivity"></activity>
     </application>
 
 </manifest>

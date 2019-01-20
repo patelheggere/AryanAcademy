@@ -8,6 +8,50 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:453661681374:android:98c782d603e9cde4",
+        "android_client_info": {
+          "package_name": "com.example.admin.aryanadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453661681374-oeh1g2aorr1evafk489ndpeva39hc4rn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.admin.aryanadmin",
+            "certificate_hash": "31f193b39e94e6b1d609010f4fe9be4db314c4a9"
+          }
+        },
+        {
+          "client_id": "453661681374-9e6b9mfqjb60a20tjgo2nn8mi89lir4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByrasM8DoypMKwjYoMrPLIG13OPu5OjW4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453661681374-9e6b9mfqjb60a20tjgo2nn8mi89lir4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:453661681374:android:0ec4a34bd454876f",
         "android_client_info": {
           "package_name": "com.patelheggere.aryanacademy"

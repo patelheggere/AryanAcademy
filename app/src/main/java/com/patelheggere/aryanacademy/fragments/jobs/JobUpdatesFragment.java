@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patelheggere.aryanacademy.AryanAcademyApplication;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.adapter.CurrentAffairsAdapter;
 import com.patelheggere.aryanacademy.adapter.JobUpdateAdapter;
@@ -94,7 +95,7 @@ public class JobUpdatesFragment extends BaseFragment {
         mProgressBar.setVisibility(View.VISIBLE);
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "ka");
 
-        databaseReference = firebaseDatabase.getReference();
+        databaseReference = AryanAcademyApplication.getFireBaseRef();
         databaseReference = databaseReference.child(lang).child(JOB);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override

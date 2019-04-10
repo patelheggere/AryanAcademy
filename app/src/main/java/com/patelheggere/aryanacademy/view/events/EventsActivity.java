@@ -112,4 +112,5 @@ public class EventsActivity extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

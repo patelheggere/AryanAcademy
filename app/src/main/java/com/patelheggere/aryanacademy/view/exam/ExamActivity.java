@@ -60,10 +60,15 @@ public class ExamActivity extends BaseActivity implements MCQExamFragment.OnFrag
     private List<MCQQuestionModel> answerList;
     private AlertDialog mAlertDialogAnswerChart;
     private int i;
-    private DatabaseReference databaseReferenceEnglish;
+    private DatabaseReference databaseReferenceEnglish, databaseReferenceAssessment;
     private List<AssessmentModel> assessmentModelList;
+    private Map<String, String> assesmentIds;
+    private Map<String, String> userAssesmentIdsMap;
+    private List<String> assessmentIdsList;
     private RecyclerView mRecyclerViewAssessments;
     private AssessmentListAdapter mAdapter;
+    private int assessmentIdIndex;
+    private List<String> userAssessmentIdList;
 
 
     @Override
@@ -94,22 +99,62 @@ public class ExamActivity extends BaseActivity implements MCQExamFragment.OnFrag
 
     private void getDataFromFireBase() {
         databaseReferenceEnglish = AryanAcademyApplication.getFireBaseRef();
+        userAssessmentIdList = new ArrayList<>();
         databaseReferenceEnglish = databaseReferenceEnglish.child("users").child(SharedPrefsHelper.getInstance().get(COURSE, "null")).child(SharedPrefsHelper.getInstance().get(MOBILE, "name")).child("Assessments");
         databaseReferenceEnglish.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mcqQuestionModelList = new ArrayList<>();
                 assessmentModelList = new ArrayList<>();
+                assesmentIds = new HashMap<>();
+                userAssesmentIdsMap = new HashMap<>();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren())
                 {
                     AssessmentModel assessmentModel = new AssessmentModel();
                     assessmentModel = snapshot.getValue(AssessmentModel.class);
-                    assessmentModelList.add(assessmentModel);
-                    Log.d(TAG, "onDataChange: "+assessmentModel.getmTitle());
+                    userAssesmentIdsMap.put(snapshot.getKey(), snapshot.getKey());
+                    assesmentIds.put(assessmentModel.getAssessmentId(),assessmentModel.getAssessmentId());
                 }
-                mAdapter = new AssessmentListAdapter(ExamActivity.this, assessmentModelList);
-                mRecyclerViewAssessments.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
-                mRecyclerViewAssessments.setAdapter(mAdapter);
+                assessmentIdsList = new ArrayList<>(assesmentIds.values());
+                userAssessmentIdList = new ArrayList<>(userAssesmentIdsMap.values());
+                databaseReferenceAssessment = AryanAcademyApplication.getFireBaseRef();
+                for (int i =0;i<assessmentIdsList.size(); i++) {
+                    try {
+                        assessmentIdIndex = i;
+                        //Log.d(TAG, "onDataChange: "+);
+                        DatabaseReference databaseReference = AryanAcademyApplication.getFireBaseRef();
+                        databaseReference = databaseReference.child("ASSESSMENT").child("assessmentList").child(assessmentIdsList.get(i));
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot!=null) {
+                                    Log.d(TAG, "onDataChange: "+dataSnapshot.getKey());
+                                    AssessmentModel assessmentModel = new AssessmentModel();
+                                    assessmentModel = dataSnapshot.getValue(AssessmentModel.class);
+                                      assessmentModel.setAssessmentId(dataSnapshot.getKey());
+                                    assessmentModelList.add(assessmentModel);
+                                    if(userAssessmentIdList.size()==assessmentModelList.size())
+                                    {
+                                        for(int i = 0; i<assessmentModelList.size(); i++)
+                                        {
+                                            assessmentModelList.get(i).setUserAssessmentId(userAssessmentIdList.get(i));
+                                        }
+                                        mAdapter = new AssessmentListAdapter(ExamActivity.this, assessmentModelList);
+                                        mRecyclerViewAssessments.setLayoutManager(new LinearLayoutManager(ExamActivity.this, LinearLayoutManager.VERTICAL, false));
+                                        mRecyclerViewAssessments.setAdapter(mAdapter);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
 
                /* for (DataSnapshot snapshot : dataSnapshot.getChildren())
                 {

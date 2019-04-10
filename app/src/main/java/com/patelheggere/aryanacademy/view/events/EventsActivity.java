@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patelheggere.aryanacademy.AryanAcademyApplication;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.adapter.EventDetailsAdapter;
 import com.patelheggere.aryanacademy.adapter.SlidingImage_Adapter;
@@ -70,8 +71,8 @@ public class EventsActivity extends BaseActivity {
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "en");
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
        // firebaseDatabase.setPersistenceEnabled(true);
-        databaseReference  = firebaseDatabase.getReference();
-        databaseReference = databaseReference.child(EVENTS).child(lang);
+        databaseReference  = AryanAcademyApplication.getFireBaseRef();
+        databaseReference = databaseReference.child(lang).child(EVENTS);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

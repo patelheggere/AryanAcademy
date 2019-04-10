@@ -111,10 +111,10 @@ public class MCQExamFragment extends BaseFragment {
             }
             mQuestionNumber.setText(mcqQuestionModel.getmQuestionNo() + ".");
             mQuestionDescription.setText(mcqQuestionModel.getQuestion());
-            mRadioButtonOp1.setText(mcqQuestionModel.getOptions().getOption1());
-            mRadioButtonOp2.setText(mcqQuestionModel.getOptions().getOption2());
-            mRadioButtonOp3.setText(mcqQuestionModel.getOptions().getOption3());
-            mRadioButtonOp4.setText(mcqQuestionModel.getOptions().getOption4());
+            mRadioButtonOp1.setText(mcqQuestionModel.getOption1());
+            mRadioButtonOp2.setText(mcqQuestionModel.getOption2());
+            mRadioButtonOp3.setText(mcqQuestionModel.getOption3());
+            mRadioButtonOp4.setText(mcqQuestionModel.getOption4());
             if(mcqQuestionModel.isAnswered())
             {
                 if(mcqQuestionModel.getmUserAnswer()==1)
@@ -156,10 +156,10 @@ public class MCQExamFragment extends BaseFragment {
             }
             mQuestionNumber.setText(mcqQuestionModel.getmQuestionNo() + ".");
             mQuestionDescription.setText(mcqQuestionModel.getQuestion());
-            mRadioButtonOp1.setText(mcqQuestionModel.getOptions().getOption1());
-            mRadioButtonOp2.setText(mcqQuestionModel.getOptions().getOption2());
-            mRadioButtonOp3.setText(mcqQuestionModel.getOptions().getOption3());
-            mRadioButtonOp4.setText(mcqQuestionModel.getOptions().getOption4());
+            mRadioButtonOp1.setText(mcqQuestionModel.getOption1());
+            mRadioButtonOp2.setText(mcqQuestionModel.getOption2());
+            mRadioButtonOp3.setText(mcqQuestionModel.getOption3());
+            mRadioButtonOp4.setText(mcqQuestionModel.getOption4());
         }
     }
 

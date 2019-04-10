@@ -41,27 +41,32 @@ public class AssessmentListAdapter extends RecyclerView.Adapter<AssessmentListAd
     @Override
     public void onBindViewHolder(@NonNull AssessmentViewHolder currentaffairsViewHolder, int i) {
        final AssessmentModel assessmentModel = jobList.get(i);
-      currentaffairsViewHolder.title.setText(assessmentModel.getmTitle());
-      currentaffairsViewHolder.date.setText(converters.TimeStampToDate(assessmentModel.getmTime()));
-      currentaffairsViewHolder.answeredWrong.setText("Total Answered Wrong:"+assessmentModel.getNoOfWrongAns());
-      currentaffairsViewHolder.answeredCorrect.setText("Total Answered Correct:"+assessmentModel.getNoOfCorrectAns());
-        if(assessmentModel.getEndTime()>(System.currentTimeMillis())/1000)
-        {
-            currentaffairsViewHolder.buttonTest.setText("OVER");
-        }
-      currentaffairsViewHolder.buttonTest.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              if(assessmentModel.getEndTime()<(System.currentTimeMillis())/1000) {
-                  Intent intent = new Intent(mContext, TestActivity.class);
-                  intent.putExtra("DATA", assessmentModel);
-                  mContext.startActivity(intent);
-              }
-              else {
-                  Toast.makeText(mContext, "Already Over this ", Toast.LENGTH_LONG).show();
-              }
-          }
-      });
+       if(assessmentModel!=null) {
+           if (assessmentModel.getmTitle()!= null)
+               currentaffairsViewHolder.title.setText(assessmentModel.getmTitle());
+           currentaffairsViewHolder.date.setText(converters.TimeStampToDate(assessmentModel.getmTime()));
+           currentaffairsViewHolder.totalQuestions.setText("No of Questions:"+assessmentModel.getNoOfQuestions());
+           currentaffairsViewHolder.answeredWrong.setText("Total Answered Wrong:" + assessmentModel.getNoOfWrongAns());
+           currentaffairsViewHolder.answeredCorrect.setText("Total Answered Correct:" + assessmentModel.getNoOfCorrectAns());
+           if (assessmentModel.getEndTime() < (System.currentTimeMillis()) / 1000) {
+               currentaffairsViewHolder.buttonTest.setText("OVER");
+           }
+           else {
+               currentaffairsViewHolder.buttonTest.setText("START");
+           }
+           currentaffairsViewHolder.buttonTest.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View view) {
+                   if (assessmentModel.getEndTime() > (System.currentTimeMillis()) / 1000) {
+                       Intent intent = new Intent(mContext, TestActivity.class);
+                       intent.putExtra("DATA", assessmentModel);
+                       mContext.startActivity(intent);
+                   } else {
+                       Toast.makeText(mContext, "Already Over this ", Toast.LENGTH_LONG).show();
+                   }
+               }
+           });
+       }
     }
 
     @Override

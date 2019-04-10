@@ -61,6 +61,7 @@ public class TestActivity extends BaseActivity implements MCQExamFragment.OnFrag
     private AssessmentModel assessmentModel;
     private int NoOfCorrectAns=0;
     private int NoOfWrongAns = 0;
+    private String[] questions;
 
     @Override
     protected int getContentView() {
@@ -110,52 +111,67 @@ public class TestActivity extends BaseActivity implements MCQExamFragment.OnFrag
     }
 
     private void getDataFromFireBase() {
-        databaseReferenceEnglish = AryanAcademyApplication.getFireBaseRef();
-        databaseReferenceEnglish = databaseReferenceEnglish.child("ASSESSMENT").child("assessmentList").child("assessment"+assessmentModel.getId()).child("questions");
-        databaseReferenceEnglish.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mcqQuestionModelList = new ArrayList<>();
-                try {
-                    int i = 1;
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren())
-                    {
-                        MCQQuestionModel mcqQuestionModel = new MCQQuestionModel();
-                        mcqQuestionModel = snapshot.getValue(MCQQuestionModel.class);
-                        mcqQuestionModel.setmQuestionNo(i);
-                        mcqQuestionModelList.add(mcqQuestionModel);
-                        i++;
-                    }
-                    if(mcqQuestionModelList!=null) {
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable("DATA", mcqQuestionModelList.get(0));
-                        if (curFrag != null) {
-                            fragmentTransaction.detach(curFrag);
+        if(assessmentModel.getQuestions()!=null) {
+            questions = assessmentModel.getQuestions().split(",");
+            mcqQuestionModelList = new ArrayList<>();
+            if(questions!=null) {
+                for (int i=0;i<questions.length; i++) {
+                    DatabaseReference databaseReference = AryanAcademyApplication.getFireBaseRef();
+                    databaseReference = databaseReference.child("ASSESSMENT").child("en").child("Questions").child(questions[i]);
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                        {
+                            try {
+                                MCQQuestionModel mcqQuestionModel = new MCQQuestionModel();
+                                mcqQuestionModel = dataSnapshot.getValue(MCQQuestionModel.class);
+                                //mcqQuestionModel.setmQuestionNo(i);
+                                mcqQuestionModelList.add(mcqQuestionModel);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            if(mcqQuestionModelList.size()==questions.length)
+                            {
+                                for (int i=0; i<mcqQuestionModelList.size(); i++)
+                                {
+                                    mcqQuestionModelList.get(i).setmQuestionNo(i+1);
+                                }
+                                startTest();
+                            }
                         }
-                        fragment = fragmentManager.findFragmentByTag("MCQ");
-                        if (fragment == null) {
-                            fragment = new MCQExamFragment();
-                            fragment.setArguments(bundle);
-                            mQuestionNumber = 1;
-                            fragmentTransaction.add(R.id.contentFrame, fragment, "MCQ");
-                        } else {
-                            fragmentTransaction.attach(fragment);
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
                         }
-                        fragmentTransaction.setPrimaryNavigationFragment(fragment);
-                        fragmentTransaction.setReorderingAllowed(true);
-                        fragmentTransaction.commitNowAllowingStateLoss();
-                        startTimer();
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    });
                 }
             }
+        }
+    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+    private void startTest()
+    {
+        if (mcqQuestionModelList != null) {
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("DATA", mcqQuestionModelList.get(0));
+            if (curFrag != null) {
+                fragmentTransaction.detach(curFrag);
             }
-        });
+            fragment = fragmentManager.findFragmentByTag("MCQ");
+            if (fragment == null) {
+                fragment = new MCQExamFragment();
+                fragment.setArguments(bundle);
+                mQuestionNumber = 1;
+                fragmentTransaction.add(R.id.contentFrame, fragment, "MCQ");
+            } else {
+                fragmentTransaction.attach(fragment);
+            }
+            fragmentTransaction.setPrimaryNavigationFragment(fragment);
+            fragmentTransaction.setReorderingAllowed(true);
+            fragmentTransaction.commitNowAllowingStateLoss();
+            startTimer();
+        }
     }
 
     private void startTimer() {
@@ -195,7 +211,7 @@ public class TestActivity extends BaseActivity implements MCQExamFragment.OnFrag
             assessmentModel.setNoOfCorrectAns(NoOfCorrectAns);
             assessmentModel.setNoOfWrongAns(NoOfWrongAns);
             assessmentModel.setNoOfQuestions(mcqQuestionModelList.size());
-            databaseReferenceEnglish = AryanAcademyApplication.getFireBaseRef().child("users").child(SharedPrefsHelper.getInstance().get(COURSE,"null")).child(SharedPrefsHelper.getInstance().get(MOBILE, "9611620128")).child("Assessments").child("assessment"+assessmentModel.getId());
+            databaseReferenceEnglish = AryanAcademyApplication.getFireBaseRef().child("users").child(SharedPrefsHelper.getInstance().get(COURSE,"KAS")).child(SharedPrefsHelper.getInstance().get(MOBILE, "9611620128")).child("Assessments").child(assessmentModel.getUserAssessmentId());
             databaseReferenceEnglish.setValue(assessmentModel);
         }
         Log.d(TAG, "sendAnsweredData: "+NoOfWrongAns+" no Correct Ans: "+NoOfCorrectAns);

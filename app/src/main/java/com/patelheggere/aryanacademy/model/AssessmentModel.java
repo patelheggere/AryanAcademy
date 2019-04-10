@@ -7,50 +7,84 @@ public class AssessmentModel implements Parcelable {
     private int id;
     private int marksSecured;
     private int noOfCorrectAns;
-    private int noOfQuestions;
+    private int NoOfQuestions;
     private int noOfWrongAns;
-    private int totalMarks;
-    private boolean attemptedAllowed;
-    private boolean shuffle;
+    private int TotalMarks;
+    private boolean isAttemptedAllowed;
+    private boolean isShuffle;
     private long mTime;
     private String mTitle;
     private boolean completed;
     private int maxReattempt;
     private long endTime;
+    private String assessmentId;
+    private String questions;
+    private String userAssessmentId;
 
     public AssessmentModel() {
     }
 
-    public AssessmentModel(int id, int marksSecured, int noOfCorrectAns, int noOfQuestions, int noOfWrongAns, int totalMarks, boolean attemptedAllowed, boolean shuffle, long mTime, String mTitle, boolean completed, int maxReattempt, long endTime) {
+    public AssessmentModel(String userAssessmentId, int id, int marksSecured, int noOfCorrectAns, int NoOfQuestions, int noOfWrongAns, int TotalMarks, boolean isAttemptedAllowed, boolean isShuffle, long mTime, String mTitle, boolean completed, int maxReattempt, long endTime, String assessmentId, String questions) {
         this.id = id;
         this.marksSecured = marksSecured;
         this.noOfCorrectAns = noOfCorrectAns;
-        this.noOfQuestions = noOfQuestions;
+        this.NoOfQuestions = NoOfQuestions;
         this.noOfWrongAns = noOfWrongAns;
-        this.totalMarks = totalMarks;
-        this.attemptedAllowed = attemptedAllowed;
-        this.shuffle = shuffle;
+        this.TotalMarks = TotalMarks;
+        this.isAttemptedAllowed = isAttemptedAllowed;
+        this.isShuffle = isShuffle;
         this.mTime = mTime;
         this.mTitle = mTitle;
         this.completed = completed;
         this.maxReattempt = maxReattempt;
         this.endTime = endTime;
+        this.assessmentId = assessmentId;
+        this.questions = questions;
+        this.userAssessmentId = userAssessmentId;
     }
 
     protected AssessmentModel(Parcel in) {
         id = in.readInt();
         marksSecured = in.readInt();
         noOfCorrectAns = in.readInt();
-        noOfQuestions = in.readInt();
+        NoOfQuestions = in.readInt();
         noOfWrongAns = in.readInt();
-        totalMarks = in.readInt();
-        attemptedAllowed = in.readByte() != 0;
-        shuffle = in.readByte() != 0;
+        TotalMarks = in.readInt();
+        isAttemptedAllowed = in.readByte() != 0;
+        isShuffle = in.readByte() != 0;
         mTime = in.readLong();
         mTitle = in.readString();
         completed = in.readByte() != 0;
         maxReattempt = in.readInt();
         endTime = in.readLong();
+        assessmentId = in.readString();
+        questions = in.readString();
+        userAssessmentId = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeInt(marksSecured);
+        dest.writeInt(noOfCorrectAns);
+        dest.writeInt(NoOfQuestions);
+        dest.writeInt(noOfWrongAns);
+        dest.writeInt(TotalMarks);
+        dest.writeByte((byte) (isAttemptedAllowed ? 1 : 0));
+        dest.writeByte((byte) (isShuffle ? 1 : 0));
+        dest.writeLong(mTime);
+        dest.writeString(mTitle);
+        dest.writeByte((byte) (completed ? 1 : 0));
+        dest.writeInt(maxReattempt);
+        dest.writeLong(endTime);
+        dest.writeString(assessmentId);
+        dest.writeString(questions);
+        dest.writeString(userAssessmentId);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<AssessmentModel> CREATOR = new Creator<AssessmentModel>() {
@@ -64,28 +98,6 @@ public class AssessmentModel implements Parcelable {
             return new AssessmentModel[size];
         }
     };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeInt(marksSecured);
-        parcel.writeInt(noOfCorrectAns);
-        parcel.writeInt(noOfQuestions);
-        parcel.writeInt(noOfWrongAns);
-        parcel.writeInt(totalMarks);
-        parcel.writeByte((byte) (attemptedAllowed ? 1 : 0));
-        parcel.writeByte((byte) (shuffle ? 1 : 0));
-        parcel.writeLong(mTime);
-        parcel.writeString(mTitle);
-        parcel.writeByte((byte) (completed ? 1 : 0));
-        parcel.writeInt(maxReattempt);
-        parcel.writeLong(endTime);
-    }
 
     public int getId() {
         return id;
@@ -112,11 +124,11 @@ public class AssessmentModel implements Parcelable {
     }
 
     public int getNoOfQuestions() {
-        return noOfQuestions;
+        return NoOfQuestions;
     }
 
-    public void setNoOfQuestions(int noOfQuestions) {
-        this.noOfQuestions = noOfQuestions;
+    public void setNoOfQuestions(int NoOfQuestions) {
+        this.NoOfQuestions = NoOfQuestions;
     }
 
     public int getNoOfWrongAns() {
@@ -128,27 +140,27 @@ public class AssessmentModel implements Parcelable {
     }
 
     public int getTotalMarks() {
-        return totalMarks;
+        return TotalMarks;
     }
 
-    public void setTotalMarks(int totalMarks) {
-        this.totalMarks = totalMarks;
+    public void setTotalMarks(int TotalMarks) {
+        this.TotalMarks = TotalMarks;
     }
 
-    public boolean isAttemptedAllowed() {
-        return attemptedAllowed;
+    public boolean isisAttemptedAllowed() {
+        return isAttemptedAllowed;
     }
 
-    public void setAttemptedAllowed(boolean attemptedAllowed) {
-        this.attemptedAllowed = attemptedAllowed;
+    public void setisAttemptedAllowed(boolean isAttemptedAllowed) {
+        this.isAttemptedAllowed = isAttemptedAllowed;
     }
 
-    public boolean isShuffle() {
-        return shuffle;
+    public boolean isisShuffle() {
+        return isShuffle;
     }
 
-    public void setShuffle(boolean shuffle) {
-        this.shuffle = shuffle;
+    public void setisShuffle(boolean isShuffle) {
+        this.isShuffle = isShuffle;
     }
 
     public long getmTime() {
@@ -191,7 +203,47 @@ public class AssessmentModel implements Parcelable {
         this.endTime = endTime;
     }
 
+    public String getAssessmentId() {
+        return assessmentId;
+    }
+
+    public String getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(String questions) {
+        this.questions = questions;
+    }
+
+    public void setAssessmentId(String assessmentId) {
+        this.assessmentId = assessmentId;
+    }
+
     public static Creator<AssessmentModel> getCREATOR() {
         return CREATOR;
+    }
+
+    public boolean isAttemptedAllowed() {
+        return isAttemptedAllowed;
+    }
+
+    public void setAttemptedAllowed(boolean attemptedAllowed) {
+        isAttemptedAllowed = attemptedAllowed;
+    }
+
+    public boolean isShuffle() {
+        return isShuffle;
+    }
+
+    public void setShuffle(boolean shuffle) {
+        isShuffle = shuffle;
+    }
+
+    public String getUserAssessmentId() {
+        return userAssessmentId;
+    }
+
+    public void setUserAssessmentId(String userAssessmentId) {
+        this.userAssessmentId = userAssessmentId;
     }
 }

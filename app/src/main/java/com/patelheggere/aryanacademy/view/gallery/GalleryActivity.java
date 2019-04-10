@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.patelheggere.aryanacademy.AryanAcademyApplication;
 import com.patelheggere.aryanacademy.R;
 import com.patelheggere.aryanacademy.adapter.SlidingImage_Adapter;
 import com.patelheggere.aryanacademy.base.BaseActivity;
@@ -69,8 +70,8 @@ public class GalleryActivity extends BaseActivity {
     private void getImageDate() {
         mProgressBar.setVisibility(View.VISIBLE);
         String lang = SharedPrefsHelper.getInstance().get(LANGUAGE, "kn");
-        databaseReference  = firebaseDatabase.getReference();
-        databaseReference = databaseReference.child(GALLERY).child(lang);
+        databaseReference  = AryanAcademyApplication.getFireBaseRef();
+        databaseReference = databaseReference.child(lang).child(GALLERY);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
